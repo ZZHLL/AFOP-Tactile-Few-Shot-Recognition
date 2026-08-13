@@ -1,0 +1,13 @@
+function [totalLossValue, mainLossValue, auxiliaryLossValue, gradientsEncoder, ...
+        gradientsAdapter, encoderState] = feat_episode_gradients( ...
+        encoderNet, adapterNet, episode, hp, cfg)
+% Differentiate the FEAT episodic objective.
+
+[totalLoss, mainLoss, auxiliaryLoss, ~, encoderState] = ...
+    feat_episode_objective(encoderNet, adapterNet, episode, hp, cfg);
+[gradientsEncoder, gradientsAdapter] = dlgradient(totalLoss, ...
+    encoderNet.Learnables, adapterNet.Learnables);
+totalLossValue = double(gather(extractdata(totalLoss)));
+mainLossValue = double(gather(extractdata(mainLoss)));
+auxiliaryLossValue = double(gather(extractdata(auxiliaryLoss)));
+end

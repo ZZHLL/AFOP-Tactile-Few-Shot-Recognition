@@ -1,0 +1,26 @@
+# Local datasets
+data/*.mat
+data/**/*.mat
+data/**/*.txt
+data/**/*.csv
+data/**/*.jpg
+
+# Generated experiments
+artifacts/
+runs/
+logs/
+state/
+outputs/
+
+# MATLAB
+*.asv
+*.autosave
+*.m~
+slprj/
+codegen/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
